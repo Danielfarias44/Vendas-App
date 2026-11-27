@@ -3,21 +3,31 @@ import { Link } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { ImagemProduto } from '@/components/imagem-produto';
+import { Cores, Fontes } from '@/constants/tema';
 import type { Produto } from '@/types/produto';
 
 type Propriedades = { produto: Produto; largura: number; destaque?: boolean };
 
 function ProdutoCardBase({ produto, largura, destaque = false }: Propriedades) {
+  const rotulo = `${produto.titulo}, ${formatarPreco(produto.preco)}, tamanho ${produto.tamanho}, ${produto.estado}, peça única`;
+
   return (
     <Link href={{ pathname: '/produto/[id]', params: { id: String(produto.id) } }} asChild>
-      <Pressable accessibilityRole="button" accessibilityLabel={`${produto.titulo}, ${formatarPreco(produto.preco)}`} style={StyleSheet.flatten([estilos.card, { width: largura }])}>
+      <Pressable
+        accessibilityRole="link"
+        accessibilityLabel={rotulo}
+        accessibilityHint="Abre os detalhes desta peça única"
+        style={({ pressed }) => [estilos.card, { width: largura }, pressed && estilos.pressionado]}
+      >
         <View style={estilos.fotoWrap}>
-          <ImagemProduto uri={produto.thumbnail} tamanho={largura} altura={Math.round(largura * 1.19)} />
-          <View style={estilos.selo}><Text style={estilos.seloTexto}>PEÇA ÚNICA</Text></View>
+          <ImagemProduto uri={produto.thumbnail} tamanho={largura} altura={Math.round(largura * 1.22)} accessibilityLabel={`Foto de ${produto.titulo}`} />
+          <View accessible={false} style={estilos.selo}><Text style={estilos.seloTexto}>PEÇA ÚNICA</Text></View>
         </View>
-        <View style={estilos.categoriaLinha}><Text numberOfLines={1} style={estilos.categoria}>{produto.etiqueta ?? produto.categoria}</Text><Text style={estilos.salvarTexto}>♡</Text></View>
-        <Text numberOfLines={2} style={[estilos.titulo, destaque && estilos.tituloDestaque]}>{produto.titulo}</Text>
-        <Text numberOfLines={1} style={estilos.detalhe}>{produto.marca} · {produto.tamanho} · {produto.estado}</Text>
+        <View style={estilos.categoriaLinha}>
+          <Text style={estilos.categoria}>{produto.etiqueta ?? produto.categoria}</Text>
+        </View>
+        <Text style={[estilos.titulo, destaque && estilos.tituloDestaque]}>{produto.titulo}</Text>
+        <Text style={estilos.detalhe}>{[produto.marca, produto.tamanho, produto.estado].filter(Boolean).join(' · ')}</Text>
         <Text style={estilos.preco}>{formatarPreco(produto.preco)}</Text>
       </Pressable>
     </Link>
@@ -31,15 +41,15 @@ function formatarPreco(valor: number) {
 export const ProdutoCard = memo(ProdutoCardBase);
 
 const estilos = StyleSheet.create({
-  card: { marginBottom: 24 },
-  fotoWrap: { position: 'relative', alignSelf: 'stretch', backgroundColor: '#E8E5DB' },
-  selo: { position: 'absolute', left: 9, bottom: 9, paddingHorizontal: 8, paddingVertical: 5, backgroundColor: '#F4F0E6' },
-  seloTexto: { color: '#344438', fontSize: 8, letterSpacing: 1.1, fontWeight: '700' },
-  salvarTexto: { color: '#283A30', fontSize: 19, lineHeight: 22 },
-  categoriaLinha: { height: 28, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  categoria: { flex: 1, marginTop: 1, color: '#7D806F', fontSize: 8, letterSpacing: 1, textTransform: 'uppercase' },
-  titulo: { marginTop: 1, minHeight: 22, color: '#283A30', fontSize: 12, lineHeight: 17 },
-  tituloDestaque: { fontWeight: '600' },
-  detalhe: { minHeight: 17, marginTop: 2, color: '#777A6D', fontSize: 8 },
-  preco: { marginTop: 4, color: '#283A30', fontSize: 12, fontWeight: '700' },
+  card: { minWidth: 112, marginBottom: 28 },
+  fotoWrap: { position: 'relative', alignSelf: 'stretch', overflow: 'hidden', backgroundColor: Cores.areia },
+  selo: { position: 'absolute', left: 10, bottom: 10, minHeight: 30, justifyContent: 'center', paddingHorizontal: 9, backgroundColor: Cores.offWhite },
+  seloTexto: { color: Cores.floresta, fontFamily: Fontes.textoSemibold, fontSize: 12, letterSpacing: 0.6 },
+  categoriaLinha: { minHeight: 42, flexDirection: 'row', alignItems: 'center', gap: 6 },
+  categoria: { flex: 1, color: Cores.textoSecundario, fontFamily: Fontes.textoSemibold, fontSize: 12, lineHeight: 17, letterSpacing: 0.5, textTransform: 'uppercase' },
+  titulo: { minHeight: 44, color: Cores.carvao, fontFamily: Fontes.texto, fontSize: 15, lineHeight: 21 },
+  tituloDestaque: { fontFamily: Fontes.textoSemibold },
+  detalhe: { minHeight: 38, marginTop: 3, color: Cores.textoSecundario, fontFamily: Fontes.texto, fontSize: 13, lineHeight: 18 },
+  preco: { marginTop: 5, color: Cores.floresta, fontFamily: Fontes.textoSemibold, fontSize: 17, lineHeight: 24 },
+  pressionado: { opacity: 0.78 },
 });

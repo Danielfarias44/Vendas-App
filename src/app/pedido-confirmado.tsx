@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native';
+import { TelaPlanejada } from '@/components/tela-planejada';
 
 export default function PedidoConfirmado() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Pedido confirmado</Text>
-    </View>
-  );
+  return <TelaPlanejada titulo="Pedido confirmado" descricao="Obrigada por escolher uma peça que já tem história." etiqueta="REVESTE  /  CONFIRMAÇÃO" />;
 }

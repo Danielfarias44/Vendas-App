@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native';
+import { TelaPlanejada } from '@/components/tela-planejada';
 
 export default function TelaPerfil() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Perfil</Text>
-    </View>
-  );
+  return <TelaPlanejada titulo="Sua conta Reveste" descricao="Acesse seus pedidos, informações de perfil e preferências." etiqueta="REVESTE  /  SUA CONTA" />;
 }

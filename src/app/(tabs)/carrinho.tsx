@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native';
+import { TelaPlanejada } from '@/components/tela-planejada';
 
 export default function TelaCarrinho() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Carrinho</Text>
-    </View>
-  );
+  return <TelaPlanejada titulo="Sua sacola" descricao="As peças que você escolher vão aparecer aqui." etiqueta="REVESTE  /  SACOLA" />;
 }

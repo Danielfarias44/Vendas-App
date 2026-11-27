@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native';
+import { TelaPlanejada } from '@/components/tela-planejada';
 
 export default function TelaCheckout() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Checkout</Text>
-    </View>
-  );
+  return <TelaPlanejada titulo="Finalizar pedido" descricao="A etapa de pagamento será preparada pela frente de vendas e carrinho." etiqueta="REVESTE  /  CHECKOUT" />;
 }

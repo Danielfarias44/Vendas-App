@@ -1,9 +1,10 @@
-# vendas-app
- Trabalho de Código de alta performance mobile com React Native
+# Reveste
+App mobile de ecommerce brechó online para o trabalho de alta performance mobile.
 
-App de vendas (estilo Mercado Livre / Shopee / Amazon) feito com Expo + Expo Router.
+O foco do produto é descobrir peças usadas e vintage únicas, com uma identidade editorial e uma proposta de consumo mais sustentável. A ideia também prevê missões que dão pontos para trocar por cupons; os detalhes da gamificação ainda serão definidos pelos responsáveis pelo desenvolvimento dessa parte (Bruno)
 
-- Testes: [docs/testes.md](docs/testes.md)
+- Arquitetura e divisão de responsabilidades: [docs/arquitetura.md](docs/arquitetura.md)
+- Roteiro de verificação: [docs/testes.md](docs/testes.md)
 - Relatório de performance: [docs/relatorio-performance.md](docs/relatorio-performance.md)
 
 ## Dados locais e banco
@@ -12,13 +13,6 @@ O catálogo de demonstração fica em `src/data/produtos-demo.ts` e é carregado
 
 ```bash
 npm install
-npx expo start
+npx expo start ou npm run web
 ```
 
-Para rodar a versão web com SQLite, consulte a configuração WASM e os cabeçalhos COEP/COOP na documentação do [expo-sqlite para SDK 58](https://docs.expo.dev/versions/v58.0.0/sdk/sqlite/). O alvo principal deste projeto é Android/iOS via Expo Go.
-
-## Rodar
-```bash
-npm install
-npx expo start
-```

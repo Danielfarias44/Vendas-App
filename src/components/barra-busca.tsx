@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { Cores, Fontes } from '@/constants/tema';
+
 type Propriedades = { onBuscar: (termo: string) => void; valorInicial?: string };
 
 export function BarraBusca({ onBuscar, valorInicial = '' }: Propriedades) {
@@ -13,24 +15,26 @@ export function BarraBusca({ onBuscar, valorInicial = '' }: Propriedades) {
 
   return (
     <View style={estilos.container}>
-      <Text style={estilos.lupa}>⌕</Text>
+      <Text accessible={false} style={estilos.lupa}>⌕</Text>
       <TextInput
         accessibilityLabel="Buscar peças"
+        accessibilityHint="Digite o nome, marca ou categoria da peça"
         value={valor}
         onChangeText={setValor}
         placeholder="O que você procura?"
-        placeholderTextColor="#8B8B7E"
+        placeholderTextColor={Cores.textoSecundario}
         returnKeyType="search"
         style={estilos.input}
       />
-      {valor.length > 0 && <Pressable accessibilityLabel="Limpar busca" onPress={() => setValor('')}><Text style={estilos.limpar}>×</Text></Pressable>}
+      {valor.length > 0 && <Pressable accessibilityRole="button" accessibilityLabel="Limpar busca" hitSlop={8} onPress={() => setValor('')} style={estilos.botaoLimpar}><Text style={estilos.limpar}>×</Text></Pressable>}
     </View>
   );
 }
 
 const estilos = StyleSheet.create({
-  container: { height: 48, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, borderWidth: 1, borderColor: '#D6D4C8', backgroundColor: '#F8F7F2' },
-  lupa: { marginRight: 10, color: '#3D5143', fontSize: 24 },
-  input: { flex: 1, paddingVertical: 0, color: '#283A30', fontSize: 13 },
-  limpar: { paddingHorizontal: 5, color: '#5E675C', fontSize: 22 },
+  container: { minHeight: 48, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, borderWidth: 1, borderColor: Cores.borda, backgroundColor: Cores.offWhite },
+  lupa: { marginRight: 10, color: Cores.floresta, fontSize: 24 },
+  input: { minHeight: 46, flex: 1, paddingVertical: 6, color: Cores.carvao, fontFamily: Fontes.texto, fontSize: 15 },
+  botaoLimpar: { minWidth: 44, minHeight: 44, alignItems: 'center', justifyContent: 'center' },
+  limpar: { color: Cores.floresta, fontFamily: Fontes.texto, fontSize: 24 },
 });

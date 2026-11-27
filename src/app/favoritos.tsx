@@ -1,9 +1,5 @@
-import { Text, View } from 'react-native';
+import { TelaPlanejada } from '@/components/tela-planejada';
 
 export default function Favoritos() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Favoritos</Text>
-    </View>
-  );
+  return <TelaPlanejada titulo="Peças guardadas" descricao="Seus favoritos ficam reunidos aqui para você voltar quando quiser." etiqueta="REVESTE  /  FAVORITOS" />;
 }
