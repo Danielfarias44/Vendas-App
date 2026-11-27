@@ -1,4 +1,3 @@
-// Histórico de pedidos vindo de listarPedidos().
 import { Text, View } from 'react-native';
 
 export default function MeusPedidos() {

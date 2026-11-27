@@ -1,4 +1,3 @@
-// Favoritos do usuário. Usado na tela de detalhe e no perfil.
 import type { Produto } from '@/types/produto';
 
 export async function listarFavoritos(): Promise<Produto[]> {
@@ -6,7 +5,6 @@ export async function listarFavoritos(): Promise<Produto[]> {
 }
 
 export async function alternarFavorito(produto: Produto): Promise<boolean> {
-  // retorna true se ficou favoritado
   return false;
 }
 

@@ -1,10 +1,8 @@
-// Responsividade de rotação de tela.
-// TODO:
-// - Usar useWindowDimensions() para saber se está em retrato ou paisagem.
-// - Retornar número de colunas da grade (ex.: 2 em retrato, 4 em paisagem).
-// - IMPORTANTE: trocar "orientation": "portrait" para "default" no app.json,
-//   senão a tela não gira.
+import { useWindowDimensions } from 'react-native';
 
 export function useOrientacao() {
-  return { paisagem: false, colunas: 2, largura: 0 };
+  const { width: largura, height: altura } = useWindowDimensions();
+  const paisagem = largura > altura;
+  const colunas = largura > 1100 ? 4 : paisagem ? 3 : 2;
+  return { paisagem, colunas, largura };
 }

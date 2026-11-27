@@ -1,4 +1,3 @@
-// Itens do carrinho.
 import type { Produto } from './produto';
 
 export type ItemCarrinho = {

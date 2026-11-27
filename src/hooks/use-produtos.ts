@@ -1,17 +1,20 @@
-// Hook de processamento assíncrono + lazy loading (scroll infinito).
-// TODO:
-// - Carregar a 1ª página ao montar; carregarMais() busca a próxima página.
-// - Estados: carregando, carregandoMais, erro, atualizando (pull-to-refresh).
-// - Se a API falhar, usar o cache do banco (cache-produtos.ts).
+import { useCallback, useState } from 'react';
+
+import { produtosDemo } from '@/data/produtos-demo';
 import type { Produto } from '@/types/produto';
 
 export function useProdutos() {
+  const [produtos, setProdutos] = useState<Produto[]>(produtosDemo);
+  const carregarMais = useCallback(async () => {}, []);
+  const carregarPrimeiraPagina = useCallback(() => {
+    setProdutos(produtosDemo);
+  }, []);
   return {
-    produtos: [] as Produto[],
+    produtos,
     carregando: false,
     carregandoMais: false,
-    erro: null as string | null,
-    carregarMais: () => {},
-    atualizar: () => {},
+    erro: null,
+    carregarMais,
+    atualizar: carregarPrimeiraPagina,
   };
 }

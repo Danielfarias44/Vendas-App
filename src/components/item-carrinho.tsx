@@ -1,11 +1,10 @@
-// Linha do carrinho: imagem, nome, preço, botões + / − e remover.
 import { Text, View } from 'react-native';
 
 import type { ItemCarrinho as Item } from '@/types/carrinho';
 
-type Props = { item: Item };
+type Propriedades = { item: Item };
 
-export function ItemCarrinho({ item }: Props) {
+export function ItemCarrinho({ item }: Propriedades) {
   return (
     <View>
       <Text>

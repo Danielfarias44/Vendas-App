@@ -1,4 +1,3 @@
-// Cores, espaçamentos e tamanhos de fonte do app. Definir a identidade visual aqui.
 export const Cores = {
   primaria: '#3483FA',
   fundo: '#FFFFFF',

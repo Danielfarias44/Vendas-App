@@ -1,11 +1,16 @@
-// Hook que busca UM produto pelo id (tela de detalhe), com carregando/erro.
-import type { Produto } from '@/types/produto';
+import { useCallback } from 'react';
+
+import { produtosDemo } from '@/data/produtos-demo';
 
 export function useProduto(id: number) {
+  const carregar = useCallback(async () => {
+    return produtosDemo.find((produto) => produto.id === id) ?? null;
+  }, [id]);
+
   return {
-    produto: null as Produto | null,
+    produto: produtosDemo.find((produto) => produto.id === id) ?? null,
     carregando: false,
-    erro: null as string | null,
-    tentarNovamente: () => {},
+    erro: null,
+    tentarNovamente: carregar,
   };
 }

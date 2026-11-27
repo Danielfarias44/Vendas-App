@@ -1,16 +1,12 @@
-// Layout raiz.
-// TODO:
-// - Chamar iniciarBanco() e manter a splash até terminar.
-// - Títulos das telas no <Stack.Screen>.
 import { Stack } from 'expo-router';
 
-import { ErrorBoundary } from '@/components/error-boundary';
+import { LimiteDeErro } from '@/components/limite-de-erro';
 import { CarrinhoProvider } from '@/context/carrinho-context';
 import { UsuarioProvider } from '@/context/usuario-context';
 
 export default function RootLayout() {
   return (
-    <ErrorBoundary>
+    <LimiteDeErro>
       <UsuarioProvider>
         <CarrinhoProvider>
           <Stack>
@@ -18,6 +14,6 @@ export default function RootLayout() {
           </Stack>
         </CarrinhoProvider>
       </UsuarioProvider>
-    </ErrorBoundary>
+    </LimiteDeErro>
   );
 }

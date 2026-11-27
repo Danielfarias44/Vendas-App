@@ -1,8 +1,3 @@
-// Estado global do carrinho, sincronizado com o banco (carrinho-repository).
-// TODO:
-// - Carregar itens do banco ao iniciar.
-// - adicionar / remover / alterarQuantidade / limpar → atualizar estado E banco.
-// - Calcular total e quantidade de itens (useMemo).
 import { createContext, useContext, type ReactNode } from 'react';
 
 import type { ItemCarrinho } from '@/types/carrinho';

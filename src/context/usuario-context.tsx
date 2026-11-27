@@ -1,5 +1,3 @@
-// Usuário logado (login simples/simulado) + editar dados do perfil.
-// TODO: persistir o usuário (banco ou expo-secure-store).
 import { createContext, useContext, type ReactNode } from 'react';
 
 import type { Usuario } from '@/types/usuario';

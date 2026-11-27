@@ -1,4 +1,3 @@
-// Pedido finalizado.
 import type { ItemCarrinho } from './carrinho';
 
 export type FormaPagamento = 'pix' | 'cartao' | 'boleto';

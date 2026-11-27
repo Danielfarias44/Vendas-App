@@ -1,4 +1,3 @@
-// CRUD do carrinho (persistido para não perder ao fechar o app).
 import type { ItemCarrinho } from '@/types/carrinho';
 import type { Produto } from '@/types/produto';
 

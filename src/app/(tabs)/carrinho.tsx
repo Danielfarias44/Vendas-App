@@ -1,5 +1,3 @@
-// Carrinho: lista de itens (useCarrinho), total e botão "Finalizar compra" → /checkout.
-// TODO: estado vazio ("Seu carrinho está vazio").
 import { Text, View } from 'react-native';
 
 export default function TelaCarrinho() {

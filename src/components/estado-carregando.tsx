@@ -1,4 +1,3 @@
-// Indicador de carregamento padrão. TODO: opcional trocar por skeleton.
 import { ActivityIndicator, View } from 'react-native';
 
 export function EstadoCarregando() {
